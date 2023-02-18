@@ -9,7 +9,8 @@ import { VistaListaIngredientesComponent } from './vista-lista-ingredientes/vist
     VistaListaIngredientesComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    NgModule
   ],
   exports: [
     VistaListaIngredientesComponent

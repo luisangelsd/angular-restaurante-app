@@ -27,20 +27,6 @@ export class VistaPlatilloAleatorioComponent implements OnInit{
     this.serviciosApi.platilloAleatorio().subscribe(
       HttpResponse => {
         this.entityPlatillo=HttpResponse;
-        
-        /*
-         Swal.fire({
-          title: '',
-          text: 'Sugerencia del Día',
-          imageUrl: `${this.entityPlatillo.meals[0].strMealThumb}`,
-          imageWidth: 300,
-          imageHeight: 250,
-          imageAlt: this.entityPlatillo.meals[0].strMeal,
-
-          showCancelButton: true,
-          cancelButtonColor: '#d33',
-          confirmButtonText: 'Ver detalles'
-        })*/
 
         Swal.fire({
           title: this.entityPlatillo.meals[0].strMeal,
