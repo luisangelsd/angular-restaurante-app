@@ -11,5 +11,9 @@
 }
 
 #filtros_porNombre{
-    background-color: antiquewhite;
+    text-align: center;
+}
+
+#filtros_porPrimeraLetra{
+    text-align: right;
 }

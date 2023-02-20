@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiThemealdbService } from '../../servicios/api-themealdb.service';
 import { EntityPlatillo } from '../../commons/entity-platillo';
 import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
+import { throwError } from 'rxjs';
 
 @Component({
   selector: 'app-vista-lista-platillos',
@@ -20,11 +21,28 @@ export class VistaListaPlatillosComponent  implements OnInit{
 
   //--
 formFiltroPrimeraLetra(){
-  let letra: String=  (document.getElementById('filtro-buscar-por-primer-letra') as HTMLInputElement).value
+  let letra: String=  (document.getElementById('filtro-buscar-por-primer-letra') as HTMLInputElement).value;
   this.filtroPlatilloPrimeraLetra(letra);
 }
   
-  //-- Metodos
+//-- 
+formFiltroNombre(){
+  let nombre=(document.getElementById('filtroNombre') as HTMLInputElement).value;
+  this.apiServicios.filtrarPorNombre(nombre).subscribe(
+    HttpResponse =>{
+      this.entityPlatillo=HttpResponse;
+    },
+    HttpErrorResponse=>{
+      return throwError(HttpErrorResponse);
+    }
+  )
+}
+
+
+
+
+
+  //-- Servicio: Filtrar por primera letra
   public filtroPlatilloPrimeraLetra(letra: String){
     this.apiServicios.filtrarPlatilloPrimeraLetra(letra).subscribe(
       HttpResponse =>{
@@ -35,6 +53,10 @@ formFiltroPrimeraLetra(){
       }
     )
   }
+
+    //-- Servicio: Filtrar por primera letra
+
+
 
 
 

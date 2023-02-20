@@ -13,9 +13,9 @@
 <section id="filtros">
 
     <section id="filtros_porNombre">
-        <form >
-            <input type="text" placeholder="Buscar por nombre">
-            <input type="submit" value="Buscar">
+        <form>
+            <input type="text" placeholder="Buscar por nombre" required id="filtroNombre">
+            <input type="submit" value="Buscar" (click)="formFiltroNombre()">
         </form>
     </section>
 
@@ -79,7 +79,7 @@
              <td>{{platillo.strCategory}}</td>
 
             <td>
-              <button type="button" class="btn btn-info">Ver detalle</button>
+              <button type="button" class="btn btn-warning">Ver detalle</button>
             </td>
           </tr>
         </tbody>
