@@ -17,13 +17,18 @@ export class VistaListaPlatillosComponent  implements OnInit{
   //-- Constructor
   constructor(private apiServicios: ApiThemealdbService){}
   
+
+  //--
+formFiltroPrimeraLetra(){
+  let letra: String=  (document.getElementById('filtro-buscar-por-primer-letra') as HTMLInputElement).value
+  this.filtroPlatilloPrimeraLetra(letra);
+}
   
   //-- Metodos
   public filtroPlatilloPrimeraLetra(letra: String){
     this.apiServicios.filtrarPlatilloPrimeraLetra(letra).subscribe(
       HttpResponse =>{
         this.entityPlatillo = HttpResponse;
-        console.log('Todo oK:'+this.entityPlatillo.meals[0].strMeal);
       },
       HttpErrorResponse=>{
         console.error(HttpErrorResponse)

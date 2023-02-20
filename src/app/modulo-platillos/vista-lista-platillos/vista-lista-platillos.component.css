@@ -1,3 +1,15 @@
 #platillos{
     padding: 5% 10%;
 }
+
+#filtros{
+    padding: 20px 20px;
+    background-color: rgb(233, 233, 233);
+    display: grid;
+    grid-template-columns: 40% 60%;
+
+}
+
+#filtros_porNombre{
+    background-color: antiquewhite;
+}
