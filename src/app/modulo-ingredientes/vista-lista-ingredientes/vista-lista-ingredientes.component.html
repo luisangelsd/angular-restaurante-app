@@ -6,25 +6,27 @@
         contiene el ingrediente seleccionado en otra pantalla y a su vez al dar clic al platillo que
         muestra el detalle del platillo 
     </p>
-
-    <table class="table">
+    <table class="table" *ngIf="entityIngredientes!=undefined">
         <thead>
           <tr>
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
+            <th scope="col">Id</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Descripción</th>
+            <th scope="col">Tipo</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
+          <tr *ngFor="let ingrediente of entityIngredientes.meals">
+             <td>{{ingrediente.idIngredient}}</td>
+             <td>{{ingrediente.strIngredient}}</td>
+             <td>{{ingrediente.strDescription}}</td>
+             <td>{{ingrediente.strType}}</td>
+            <td>
+              <button type="button" class="btn btn-info" (click)="platillosRelacionadosIngrediente(ingrediente.idIngredient)"> Platillos Relacionados</button>
+            </td>
           </tr>
         </tbody>
       </table>
-
-</section>>
+</section>
 

@@ -28,11 +28,43 @@ export class ApiThemealdbService {
   }
 
 
-  //-- Listar ingredientes: https://www.themealdb.com/api/json/v1/1/list.php?i=list
+  //-- Listar ingredientes
   public listarIngredientes():Observable<EntityIngredientes>{
     return this.http.get(this.urlEndPoint+"/api/json/v1/1/list.php?i=list").pipe(
       map( respuesta=> respuesta as EntityIngredientes),
       catchError( e=>{
+        return throwError(e);
+      })
+    )
+  }
+
+  //-- Filtrar por primera letra
+  public filtrarPlatilloPrimeraLetra(letra: String):Observable<EntityPlatillo>{
+    return this.http.get(this.urlEndPoint+'/api/json/v1/1/search.php?f='+letra).pipe(
+      map (respuesta => respuesta as EntityPlatillo),
+      catchError(e=>{
+        return throwError(e);
+      })
+    )
+  }
+
+  //-- Filtrar por nombre
+  public filtrarPorNombre(nombre:String):Observable<EntityPlatillo>{
+    return this.http.get(this.urlEndPoint+'/api/json/v1/1/search.php?s='+nombre).pipe(
+      map(respuesta => respuesta as EntityPlatillo),
+      catchError(e=>{
+        return throwError(e);
+      })
+    )
+  }
+
+  //-- Filtrar por Ingrediente
+
+  //-- Buscar por id
+  public buscarComidaPorId(id:String):Observable<EntityPlatillo>{
+    return this.http.get(this.urlEndPoint+'/api/json/v1/1/lookup.php?i='+id).pipe(
+      map(respuesta => respuesta as EntityPlatillo),
+      catchError(e=>{
         return throwError(e);
       })
     )

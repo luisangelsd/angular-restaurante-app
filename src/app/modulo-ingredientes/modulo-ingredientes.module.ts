@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { VistaListaIngredientesComponent } from './vista-lista-ingredientes/vista-lista-ingredientes.component';
+import {  FormsModule } from '@angular/forms';
 
 
 
@@ -10,7 +11,7 @@ import { VistaListaIngredientesComponent } from './vista-lista-ingredientes/vist
   ],
   imports: [
     CommonModule,
-    NgModule
+    FormsModule
   ],
   exports: [
     VistaListaIngredientesComponent
