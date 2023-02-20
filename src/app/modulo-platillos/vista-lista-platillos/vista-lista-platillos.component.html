@@ -13,19 +13,19 @@
 <section id="filtros">
 
     <section id="filtros_porNombre">
-        <form>
-            <input type="text" placeholder="Buscar por nombre" required id="filtroNombre">
-            <input type="submit" value="Buscar" (click)="formFiltroNombre()">
+        <form [formGroup]="formGroupFiltroNombre">
+            <input type="text" placeholder="Buscar por nombre"  id="filtroNombre" formControlName="form_nombre">
+            <input type="submit" value="Buscar"  (click)="formFiltroNombre()">
         </form>
     </section>
 
     <section id="filtros_porPrimeraLetra">
         <form>
             <label>Filtrar por  primera letra: </label>
-            <select (change)="formFiltroPrimeraLetra()" id="filtro-buscar-por-primer-letra">
+            <select (change)="filtroPlatilloPrimeraLetra()" id="filtro-buscar-por-primer-letra">
                 <option value="A" >A</option>
                 <option value="B">B</option>
-                <option value="">C</option>
+                <option value="C">C</option>
                 <option value="D">D</option>
                 <option value="E">E</option>
                 <option value="F">F</option>

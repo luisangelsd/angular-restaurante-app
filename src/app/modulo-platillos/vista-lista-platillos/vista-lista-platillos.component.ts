@@ -3,6 +3,7 @@ import { ApiThemealdbService } from '../../servicios/api-themealdb.service';
 import { EntityPlatillo } from '../../commons/entity-platillo';
 import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { throwError } from 'rxjs';
+import { FormControl, FormGroup,Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-vista-lista-platillos',
@@ -19,31 +20,33 @@ export class VistaListaPlatillosComponent  implements OnInit{
   constructor(private apiServicios: ApiThemealdbService){}
   
 
-  //--
-formFiltroPrimeraLetra(){
-  let letra: String=  (document.getElementById('filtro-buscar-por-primer-letra') as HTMLInputElement).value;
-  this.filtroPlatilloPrimeraLetra(letra);
-}
-  
 //-- 
-formFiltroNombre(){
-  let nombre=(document.getElementById('filtroNombre') as HTMLInputElement).value;
-  this.apiServicios.filtrarPorNombre(nombre).subscribe(
-    HttpResponse =>{
-      this.entityPlatillo=HttpResponse;
-    },
-    HttpErrorResponse=>{
-      return throwError(HttpErrorResponse);
-    }
-  )
+
+public formGroupFiltroNombre=new FormGroup({
+  form_nombre: new FormControl('',[Validators.required])
+});
+
+
+public formFiltroNombre():void{
+if (this.formGroupFiltroNombre.valid) {
+
+      let nombre: String=(document.getElementById('filtroNombre') as HTMLInputElement).value;
+    this.apiServicios.filtrarPorNombre(nombre).subscribe(
+      HttpResponse=>{
+        this.entityPlatillo=HttpResponse;
+      },
+      HttpErrorResponse=>{
+        alert(HttpErrorResponse);
+      }
+    )
+  }
 }
-
-
 
 
 
   //-- Servicio: Filtrar por primera letra
-  public filtroPlatilloPrimeraLetra(letra: String){
+  public filtroPlatilloPrimeraLetra(){
+    let letra: String=  (document.getElementById('filtro-buscar-por-primer-letra') as HTMLInputElement).value;
     this.apiServicios.filtrarPlatilloPrimeraLetra(letra).subscribe(
       HttpResponse =>{
         this.entityPlatillo = HttpResponse;
@@ -54,15 +57,10 @@ formFiltroNombre(){
     )
   }
 
-    //-- Servicio: Filtrar por primera letra
-
-
-
-
 
 
   ngOnInit(): void {
-    this.filtroPlatilloPrimeraLetra('a');
+    this.filtroPlatilloPrimeraLetra();
   }
 
 
