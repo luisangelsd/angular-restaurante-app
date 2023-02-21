@@ -61,7 +61,7 @@ export class ApiThemealdbService {
   //-- Filtrar por Ingrediente
 
   //-- Buscar por id
-  public buscarComidaPorId(id:String):Observable<EntityPlatillo>{
+  public buscarComidaPorId(id:Number):Observable<EntityPlatillo>{
     return this.http.get(this.urlEndPoint+'/api/json/v1/1/lookup.php?i='+id).pipe(
       map(respuesta => respuesta as EntityPlatillo),
       catchError(e=>{

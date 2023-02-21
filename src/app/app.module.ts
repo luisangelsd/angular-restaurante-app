@@ -10,6 +10,7 @@ import { VistaListaIngredientesComponent } from './modulo-ingredientes/vista-lis
 import { CommonModule } from '@angular/common';
 import { ModuloPlatillosModule } from './modulo-platillos/modulo-platillos.module';
 import { VistaListaPlatillosComponent } from './modulo-platillos/vista-lista-platillos/vista-lista-platillos.component';
+import { VistaPlatilloDetalleComponent } from './modulo-platillos/vista-platillo-detalle/vista-platillo-detalle.component';
 
 
 
@@ -17,7 +18,8 @@ import { VistaListaPlatillosComponent } from './modulo-platillos/vista-lista-pla
 const rutas: Routes=[
   {path:'', component:VistaPlatilloAleatorioComponent },
   {path:'ingredientes', component:VistaListaIngredientesComponent},
-  {path: 'platillos', component: VistaListaPlatillosComponent}
+  {path: 'platillos', component: VistaListaPlatillosComponent},
+  {path: 'platillo-detalle', component: VistaPlatilloDetalleComponent}
 ]
 
 
