@@ -19,7 +19,7 @@ const rutas: Routes=[
   {path:'', component:VistaPlatilloAleatorioComponent },
   {path:'ingredientes', component:VistaListaIngredientesComponent},
   {path: 'platillos', component: VistaListaPlatillosComponent},
-  {path: 'platillo-detalle', component: VistaPlatilloDetalleComponent}
+  {path: 'platillo-detalle/:id', component: VistaPlatilloDetalleComponent}
 ]
 
 

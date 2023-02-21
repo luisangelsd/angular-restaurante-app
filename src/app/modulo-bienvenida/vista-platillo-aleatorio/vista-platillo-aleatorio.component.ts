@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 import { ApiThemealdbService } from '../../servicios/api-themealdb.service';
 import { EntityPlatillo } from '../../commons/entity-platillo';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-vista-platillo-aleatorio',
@@ -11,11 +12,14 @@ import { EntityPlatillo } from '../../commons/entity-platillo';
 export class VistaPlatilloAleatorioComponent implements OnInit{
 
     //-- Variables globales
-    entityPlatillo:EntityPlatillo=new EntityPlatillo();
+    public entityPlatillo:EntityPlatillo=new EntityPlatillo();
+    
+
 
   //-- Constructores
   constructor(
-   private serviciosApi: ApiThemealdbService
+   private serviciosApi: ApiThemealdbService,
+   private router: Router
   ){ }
 
 
@@ -40,7 +44,7 @@ export class VistaPlatilloAleatorioComponent implements OnInit{
           confirmButtonText: 'Ver detalles'
         }).then((result) => {
           if (result.isConfirmed) {
-            alert("Cargando ventana detalle");
+            this.router.navigate(['/platillo-detalle/'+this.entityPlatillo.meals[0].idMeal]);
           }
         })
 

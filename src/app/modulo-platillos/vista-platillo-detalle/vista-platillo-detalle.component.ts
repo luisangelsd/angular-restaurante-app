@@ -32,20 +32,17 @@ export class VistaPlatilloDetalleComponent implements OnInit{
 
      if (id) {
 
-      this.apiServicios.buscarComidaPorId(id).subscribe(
-      HttpResponse=>{
-        this.entityPlatillo=HttpResponse;
-      },
-       HttpErrorResponse=>{
-        alert(HttpErrorResponse);
-       }
-    )
+        this.apiServicios.buscarComidaPorId(id).subscribe(
+        HttpResponse=>{
+          this.entityPlatillo=HttpResponse;
+        },
+        HttpErrorResponse=>{
+          alert(HttpErrorResponse);
+        })
 
-     }
-
-
-   })
-  }
+     }//if
+   })//servicio
+  }// Metodo
 
 
   ngOnInit(): void {

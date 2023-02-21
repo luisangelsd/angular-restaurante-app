@@ -4,6 +4,7 @@ import { EntityPlatillo } from '../../commons/entity-platillo';
 import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { throwError } from 'rxjs';
 import { FormControl, FormGroup,Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-vista-lista-platillos',
@@ -14,10 +15,10 @@ export class VistaListaPlatillosComponent  implements OnInit{
   
   //-- Variables globales
   public entityPlatillo: EntityPlatillo | undefined;
-
+  public mensaje:String='Mensaje';
 
   //-- Constructor
-  constructor(private apiServicios: ApiThemealdbService){}
+  constructor(private apiServicios: ApiThemealdbService, private router: Router){}
   
 
 //-- 
@@ -57,6 +58,10 @@ if (this.formGroupFiltroNombre.valid) {
     )
   }
 
+//-- Redirección: Abre la pagina de detalle comida
+public redireccionarPlatilloDetalle(idPlatillo: any){
+  this.router.navigate(['/platillo-detalle/'+ idPlatillo]);
+}
 
 
   ngOnInit(): void {
