@@ -2,19 +2,22 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { VistaListaPlatillosComponent } from './vista-lista-platillos/vista-lista-platillos.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { VistaPlatilloDetalleComponent } from './vista-platillo-detalle/vista-platillo-detalle.component';
 
 
 
 @NgModule({
   declarations: [
-    VistaListaPlatillosComponent
+    VistaListaPlatillosComponent,
+    VistaPlatilloDetalleComponent
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule
   ],
   exports: [
-    VistaListaPlatillosComponent
+    VistaListaPlatillosComponent,
+    VistaPlatilloDetalleComponent
   ]
 })
 export class ModuloPlatillosModule { }
