@@ -4,6 +4,7 @@ import { EntityIngredientes } from '../../commons/entity-ingredientes';
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { EntityIngredientesDetalle } from '../../commons/entity-ingredientes-detalle';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-vista-lista-ingredientes',
@@ -15,15 +16,13 @@ export class VistaListaIngredientesComponent implements OnInit{
   //-- Variables globales
   entityIngredientes: EntityIngredientes | undefined;
 
-
-
+  //-- Constructor
   constructor(
     private apiServicios: ApiThemealdbService,
-    private router: Router
-  ){  }
+    private router: Router){ }
 
 
-  //-- Metodo listar
+  //-- Metodo: Lista todo los ingredientes
     public listarIngredientes():void{
 
       this.apiServicios.listarIngredientes().subscribe(
@@ -32,12 +31,13 @@ export class VistaListaIngredientesComponent implements OnInit{
         },
         HttpErrorResponse=>{
           console.error("Error: "+HttpErrorResponse);
+          Swal.fire("¡No se han podido cargar los Ingredientes!",HttpErrorResponse,"error");
         }
       )
     }
 
 
-    //-- Metodo platillas relaionados
+    //-- Metodo: Redirecciona al detalle de un platillo
     public platillosRelacionadosIngrediente(ingrediente:any):void{
       this.router.navigate(['platillos/'+ingrediente]);
     }

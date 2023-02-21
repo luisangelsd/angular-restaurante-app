@@ -5,6 +5,7 @@ import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { throwError } from 'rxjs';
 import { FormControl, FormGroup,Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-vista-lista-platillos',
@@ -23,25 +24,23 @@ export class VistaListaPlatillosComponent  implements OnInit{
      private rutaActiva: ActivatedRoute){}
   
 
-//-- 
-
+//-- FormGroup: Valida el formulario buscar por nombre de ingrediente
 public formGroupFiltroNombre=new FormGroup({
   form_nombre: new FormControl('',[Validators.required])
 });
 
 
 
-//--  Metodo: Filtrar por nombre
+//--  Metodo: Filtrar por ombre
 public formFiltroNombre():void{
 if (this.formGroupFiltroNombre.valid) {
-
       let nombre: String=(document.getElementById('filtroNombre') as HTMLInputElement).value;
     this.apiServicios.filtrarPorNombre(nombre).subscribe(
       HttpResponse=>{
         this.entityPlatillo=HttpResponse;
       },
       HttpErrorResponse=>{
-        alert(HttpErrorResponse);
+        Swal.fire("¡No se han podido cargar los Platillos!",HttpErrorResponse,"error");
       }
     )
   }
@@ -57,7 +56,7 @@ if (this.formGroupFiltroNombre.valid) {
         this.entityPlatillo = HttpResponse;
       },
       HttpErrorResponse=>{
-        console.error(HttpErrorResponse)
+        Swal.fire("¡No se han podido cargar los Platillos!",HttpErrorResponse,"error");
       }
     )
   }
@@ -70,16 +69,10 @@ private filtrarPlatilloIngrediente(ingrediente: String):void{
       this.entityPlatillo=HttpResponse;
     },
     HttpErrorResponse=>{
-      console.error(HttpErrorResponse);
+      Swal.fire("¡No se han podido cargar los Platillos!",HttpErrorResponse,"error");
     }
   )
 }
-
-
-  //-- Redirección: Abre la pagina de detalle comida
-  public redireccionarPlatilloDetalle(idPlatillo: any):void{
-    this.router.navigate(['/platillo-detalle/'+ idPlatillo]);
-  }
 
   //-- Metodo: Verifica si existe algun parametro de entrada y eleigue el mejor camino para cargar los datos por defecto
   private datosDeInicio():void{
@@ -91,6 +84,11 @@ private filtrarPlatilloIngrediente(ingrediente: String):void{
         this.filtroPlatilloPrimeraLetra();
       }
     })
+  }
+
+  //-- Redirección: Abre la pagina de detalle comida
+  public redireccionarPlatilloDetalle(idPlatillo: any):void{
+    this.router.navigate(['/platillo-detalle/'+ idPlatillo]);
   }
 
 

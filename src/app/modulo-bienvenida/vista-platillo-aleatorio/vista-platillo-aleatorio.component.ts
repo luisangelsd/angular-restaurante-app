@@ -25,7 +25,7 @@ export class VistaPlatilloAleatorioComponent implements OnInit{
 
 
 
-  //-- Metodos
+  //-- Metodo: Imprimir platillo aleatorio y redireccionar al detalle del platillo
   public popupPlatilloAleatorio():void{
     
     this.serviciosApi.platilloAleatorio().subscribe(
@@ -57,13 +57,7 @@ export class VistaPlatilloAleatorioComponent implements OnInit{
 
   }
 
-
-  
-  
-
-
-
-  //-- Constructor de arranque
+  //-- Constructor
   ngOnInit(): void {
       this.popupPlatilloAleatorio();
   }
