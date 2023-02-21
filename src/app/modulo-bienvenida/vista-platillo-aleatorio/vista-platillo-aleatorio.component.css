@@ -1,3 +1,11 @@
 #bienvenido{
-    padding: 5% 25%;
+    padding: 5% 25% 5% 25% ;
+    text-align: center;
 }
+
+
+#bienvenido-descripcion{
+    padding: 5% 25% 10% 25%;
+}
+
+

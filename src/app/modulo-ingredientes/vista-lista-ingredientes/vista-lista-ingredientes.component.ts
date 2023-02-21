@@ -3,6 +3,7 @@ import { ApiThemealdbService } from '../../servicios/api-themealdb.service';
 import { EntityIngredientes } from '../../commons/entity-ingredientes';
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { EntityIngredientesDetalle } from '../../commons/entity-ingredientes-detalle';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-vista-lista-ingredientes',
@@ -17,7 +18,8 @@ export class VistaListaIngredientesComponent implements OnInit{
 
 
   constructor(
-    private apiServicios: ApiThemealdbService
+    private apiServicios: ApiThemealdbService,
+    private router: Router
   ){  }
 
 
@@ -36,8 +38,8 @@ export class VistaListaIngredientesComponent implements OnInit{
 
 
     //-- Metodo platillas relaionados
-    public platillosRelacionadosIngrediente(id:any):void{
-      alert('Abriendo '+id);
+    public platillosRelacionadosIngrediente(ingrediente:any):void{
+      this.router.navigate(['platillos/'+ingrediente]);
     }
 
 

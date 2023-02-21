@@ -1,3 +1,8 @@
-#ingredientes{
-    padding: 5% 10%;
+#ingredientes-descripcion{
+    padding: 5% 25% 2% 25%;
+    text-align: center;
+}
+
+#ingredientes-tabla{
+    padding: 2% 10%;
 }

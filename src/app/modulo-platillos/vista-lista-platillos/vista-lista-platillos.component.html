@@ -1,4 +1,4 @@
-<section id="platillos">
+<section id="platillos-descripcion">
     <h1>🍝 Platillos  </h1>
     <p>
         Al ingresar al menú de platillos mostrar una lista de platillos, es importante que
@@ -6,10 +6,10 @@
         filtros disponibles en la API. Al dar clic a un platillo, deberás mandarlo a la ventana de
         detalle del platillo.
     </p>
-
+</section>
 
     <!-- Filtrado-->
-    <section id="filtros">
+    <section id="platillos-filtros">
 
         <section id="filtros_porNombre">
             <form [formGroup]="formGroupFiltroNombre">
@@ -50,12 +50,10 @@
                     <option value="Z">Z</option>
                 </select>
             </form>
-        </section>
-        
-            
+        </section>  
     </section>
 
-    <section>
+    <section id="platillos-tabla">
         <table class="table" *ngIf="entityPlatillo!=undefined">
             <thead>
             <tr>
@@ -84,4 +82,4 @@
         </table>
     </section>
 
-</section>
+

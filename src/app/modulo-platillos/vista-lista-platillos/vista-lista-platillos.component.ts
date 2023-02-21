@@ -4,7 +4,7 @@ import { EntityPlatillo } from '../../commons/entity-platillo';
 import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { throwError } from 'rxjs';
 import { FormControl, FormGroup,Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-vista-lista-platillos',
@@ -18,7 +18,9 @@ export class VistaListaPlatillosComponent  implements OnInit{
   public mensaje:String='Mensaje';
 
   //-- Constructor
-  constructor(private apiServicios: ApiThemealdbService, private router: Router){}
+  constructor(private apiServicios: ApiThemealdbService,
+     private router: Router,
+     private rutaActiva: ActivatedRoute){}
   
 
 //-- 
@@ -28,6 +30,8 @@ public formGroupFiltroNombre=new FormGroup({
 });
 
 
+
+//--  Metodo: Filtrar por nombre
 public formFiltroNombre():void{
 if (this.formGroupFiltroNombre.valid) {
 
@@ -45,8 +49,8 @@ if (this.formGroupFiltroNombre.valid) {
 
 
 
-  //-- Servicio: Filtrar por primera letra
-  public filtroPlatilloPrimeraLetra(){
+  //-- Metodo: Filtrar por primera letra
+  public filtroPlatilloPrimeraLetra():void{
     let letra: String=  (document.getElementById('filtro-buscar-por-primer-letra') as HTMLInputElement).value;
     this.apiServicios.filtrarPlatilloPrimeraLetra(letra).subscribe(
       HttpResponse =>{
@@ -58,14 +62,40 @@ if (this.formGroupFiltroNombre.valid) {
     )
   }
 
-//-- Redirección: Abre la pagina de detalle comida
-public redireccionarPlatilloDetalle(idPlatillo: any){
-  this.router.navigate(['/platillo-detalle/'+ idPlatillo]);
+  
+//-- Metodo: Filtrar por ingrediente
+private filtrarPlatilloIngrediente(ingrediente: String):void{
+  this.apiServicios.filtrarPorIngrediente(ingrediente).subscribe(
+    HttpResponse=>{
+      this.entityPlatillo=HttpResponse;
+    },
+    HttpErrorResponse=>{
+      console.error(HttpErrorResponse);
+    }
+  )
 }
 
 
+  //-- Redirección: Abre la pagina de detalle comida
+  public redireccionarPlatilloDetalle(idPlatillo: any):void{
+    this.router.navigate(['/platillo-detalle/'+ idPlatillo]);
+  }
+
+  //-- Metodo: Verifica si existe algun parametro de entrada y eleigue el mejor camino para cargar los datos por defecto
+  private datosDeInicio():void{
+    this.rutaActiva.params.subscribe(params=>{
+      let ingrediente:String=params['ingrediente'];
+      if (ingrediente!=undefined) {
+        this.filtrarPlatilloIngrediente(ingrediente);
+      }else{
+        this.filtroPlatilloPrimeraLetra();
+      }
+    })
+  }
+
+
   ngOnInit(): void {
-    this.filtroPlatilloPrimeraLetra();
+    this.datosDeInicio();
   }
 
 

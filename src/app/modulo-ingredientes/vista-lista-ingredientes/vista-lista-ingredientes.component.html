@@ -1,32 +1,34 @@
-<section id="ingredientes">
+<section id="ingredientes-descripcion">
     <h1>🥑 Ingredientes Populares:</h1>
     <p>
         Al ingresar al menú de ingredientes Populares, mostrar la lista de
         los ingredientes más populares y al dar clic a un ingrediente, mostrar los platillos que
         contiene el ingrediente seleccionado en otra pantalla y a su vez al dar clic al platillo que
         muestra el detalle del platillo 
-    </p><br><br>
-    <table class="table" *ngIf="entityIngredientes!=undefined">
-        <thead>
-          <tr>
-            <th scope="col">Id</th>
-            <th scope="col">Nombre</th>
-            <th scope="col">Descripción</th>
-            <th scope="col">Tipo</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let ingrediente of entityIngredientes.meals">
-             <td>{{ingrediente.idIngredient}}</td>
-             <td>{{ingrediente.strIngredient}}</td>
-             <td>{{ingrediente.strDescription}}</td>
-             <td>{{ingrediente.strType}}</td>
-            <td>
-              <button type="button" class="btn btn-warning" (click)="platillosRelacionadosIngrediente(ingrediente.idIngredient)"> Platillos Relacionados</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+    </p>
+</section>
+<section id="ingredientes-tabla">
+  <table class="table" *ngIf="entityIngredientes!=undefined">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Descripción</th>
+        <th scope="col">Tipo</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let ingrediente of entityIngredientes.meals">
+         <td>{{ingrediente.idIngredient}}</td>
+         <td>{{ingrediente.strIngredient}}</td>
+         <td>{{ingrediente.strDescription}}</td>
+         <td>{{ingrediente.strType}}</td>
+        <td>
+          <button type="button" class="btn btn-warning" (click)="platillosRelacionadosIngrediente(ingrediente.strIngredient)"> Platillos Relacionados</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </section>
 

@@ -59,6 +59,14 @@ export class ApiThemealdbService {
   }
 
   //-- Filtrar por Ingrediente
+  public filtrarPorIngrediente(ingrediente: String):Observable<EntityPlatillo>{
+    return this.http.get(this.urlEndPoint+"/api/json/v1/1/filter.php?i="+ingrediente).pipe(
+      map ((respuesta)=> respuesta as EntityPlatillo),
+      catchError((e)=>{
+        return throwError(e);
+      })
+    )
+  }
 
   //-- Buscar por id
   public buscarComidaPorId(id:Number):Observable<EntityPlatillo>{
