@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiThemealdbService } from 'src/app/servicios/api-themealdb.service';
 import { EntityPlatillo } from '../../commons/entity-platillo';
 import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
+import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-vista-platillo-detalle',
@@ -10,30 +11,45 @@ import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 })
 export class VistaPlatilloDetalleComponent implements OnInit{
 
+  //-- Variables globales
+  private id:Number |undefined;
+
   //-- Constructor
-  constructor(public apiServicios: ApiThemealdbService){}
+  constructor(public apiServicios: ApiThemealdbService, private rutaActiva: ActivatedRoute){}
+
 
 
   //-- Variables
   public titulo:String='¡Platillo no encontrado!';
-  public entityPlatillo: EntityPlatillo = new EntityPlatillo();
+  public entityPlatillo: EntityPlatillo | undefined;
 
 
-  //-- Buscar platillo por id
-  public buscarPlatilloPorId(id:Number){
-    this.apiServicios.buscarComidaPorId(id).subscribe(
+
+
+ public buscarPlatilloPorId():void{
+  this.rutaActiva.params.subscribe(params => {
+     let id = params['id'];
+
+     if (id) {
+
+      this.apiServicios.buscarComidaPorId(id).subscribe(
       HttpResponse=>{
         this.entityPlatillo=HttpResponse;
       },
-      HttpErrorResponse=>{
+       HttpErrorResponse=>{
         alert(HttpErrorResponse);
-      }
+       }
     )
+
+     }
+
+
+   })
   }
 
 
   ngOnInit(): void {
-   this.buscarPlatilloPorId(52858);
+    this.buscarPlatilloPorId();
   }
 
 }
