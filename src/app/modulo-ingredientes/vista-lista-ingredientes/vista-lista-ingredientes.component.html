@@ -11,19 +11,15 @@
   <table class="table" *ngIf="entityIngredientes!=undefined">
     <thead>
       <tr>
-        <th scope="col">Id</th>
         <th scope="col">Nombre</th>
         <th scope="col">Descripción</th>
-        <th scope="col">Tipo</th>
         <th></th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let ingrediente of entityIngredientes.meals">
-         <td>{{ingrediente.idIngredient}}</td>
          <td>{{ingrediente.strIngredient}}</td>
          <td>{{ingrediente.strDescription}}</td>
-         <td>{{ingrediente.strType}}</td>
         <td>
           <button type="button" class="btn btn-warning" (click)="platillosRelacionadosIngrediente(ingrediente.strIngredient)"> Platillos Relacionados</button>
         </td>

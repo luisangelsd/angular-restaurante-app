@@ -1,25 +1,64 @@
-#platillos-descripcion{
-    padding: 5% 25% 2% 25%;
-    text-align: center;
+
+/* ============================================================ Vista: smartphone ============================================================ */
+
+@media screen and (max-width: 1000px){
+    #platillos-descripcion{
+        padding: 5% 10% 2% 10%;
+        text-align: center;
+        background-color: rgb(255, 245, 231);
+    }
+    
+    #platillos-filtros{
+        margin: 2% 1% 1% 1%;
+        padding: 20px 20px;
+        background-color: rgb(247, 247, 247);
+        display: grid;
+        grid-template-columns: 100%;
+        row-gap: 5px;
+        justify-items: center;
+    
+    }
+    
+    #filtros_porNombre{
+        text-align: center;
+    }
+    
+    #filtros_porPrimeraLetra{
+        text-align: right;
+    }
+    
+    #platillos-tabla{
+        margin: 1% 1% 5% 1%;
+
+    }
 }
+/* ============================================================ Vista: Pantallas Grandes ============================================================ */
+@media screen and (min-width: 1001px){
+    #platillos-descripcion{
+        padding: 5% 30% 2% 30%;
+        text-align: center;
+        background-color: rgb(255, 245, 231);
+    }
+    
+    #platillos-filtros{
+        margin: 2% 15% 1% 15%;
+        padding: 20px 20px;
+        background-color: rgb(247, 247, 247);
+        display: grid;
+        grid-template-columns: 40% 60%;
+    
+    }
+    
+    #filtros_porNombre{
+        text-align: center;
+    }
+    
+    #filtros_porPrimeraLetra{
+        text-align: right;
+    }
+    
+    #platillos-tabla{
+        margin: 1% 20% 5% 20%;
+    }
 
-#platillos-filtros{
-    margin: 2% 15% 1% 10%;
-    padding: 20px 20px;
-    background-color: rgb(233, 233, 233);
-    display: grid;
-    grid-template-columns: 40% 60%;
-
-}
-
-#filtros_porNombre{
-    text-align: center;
-}
-
-#filtros_porPrimeraLetra{
-    text-align: right;
-}
-
-#platillos-tabla{
-    margin: 1% 10% 5% 10%;
 }

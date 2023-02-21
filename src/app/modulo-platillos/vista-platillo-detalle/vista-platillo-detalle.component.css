@@ -1,22 +1,82 @@
 
-#platillo-detalle{
-    padding: 5% 25%;
+
+/* ============================================================ Vista: smartphone ============================================================ */
+
+
+@media screen and (max-width: 980px) {
+    #platillo-detalle{
+        padding: 5% 10%;
+        text-align: center;
+    }
+    
+    #platillo-detalle-destacado{
+        display: grid;
+        grid-template-columns: 100%;
+        justify-items: center;
+    }
+    #platillo-imagen-destacada>img{
+        width: 250px;
+        height: 250px;
+    }
+    
+    #platillo-imagen-destacada{
+        text-align: left;
+        border-radius: 5px;
+    }
+    
+    
+    #platillo-imagen-destacada>img{
+        border-radius: 20px;
+    }
+  }
+
+
+/* ============================================================ Vista: Tablets =================================================================*/
+
+@media screen and (min-width: 980px) {
+    #platillo-detalle{
+        padding: 5% 15%;
+    }
+    
+    #platillo-detalle-destacado{
+        display: grid;
+        grid-template-columns: 45% 45%;
+        grid-column-gap: 10%;
+    }
+    
+    #platillo-imagen-destacada{
+        text-align: left;
+        border-radius: 5px;
+    }
+    
+    
+    #platillo-imagen-destacada>img{
+        border-radius: 20px;
+    }
+    
 }
 
-#platillo-detalle-destacado{
-    display: grid;
-    grid-template-columns: 45% 45%;
-    grid-column-gap: 10%;
+
+/* ============================================================ Vista: Pantallas Grandes ============================================================ */
+@media screen and (min-width: 1300px) {
+    #platillo-detalle{
+        padding: 5% 25%;
+    }
+    
+    #platillo-detalle-destacado{
+        display: grid;
+        grid-template-columns: 45% 45%;
+        grid-column-gap: 10%;
+    }
+    
+    #platillo-imagen-destacada{
+        text-align: left;
+        border-radius: 5px;
+    }
+    
+    
+    #platillo-imagen-destacada>img{
+        border-radius: 20px;
+    }
+    
 }
-
-#platillo-imagen-destacada{
-    text-align: left;
-    border-radius: 5px;
-}
-
-
-#platillo-imagen-destacada>img{
-    border-radius: 20px;
-}
-
-

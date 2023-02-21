@@ -1,11 +1,35 @@
-#bienvenido{
-    padding: 5% 25% 5% 25% ;
-    text-align: center;
+
+
+/* ============================================================ Vista: smartphone ============================================================ */
+
+@media screen and (max-width: 1000px) { 
+    #bienvenido{
+        padding: 5% 10% 5% 10% ;
+        text-align: center;
+        background-color: rgb(255, 245, 231);
+    }
+
+
+    #bienvenido-descripcion{
+        padding: 5% 10% 10% 10%;
+    }
 }
 
 
-#bienvenido-descripcion{
-    padding: 5% 25% 10% 25%;
+
+/* ============================================================ Vista: Pantallas Grandes ============================================================ */
+@media screen and (min-width: 1001px) {
+    #bienvenido{
+        padding: 5% 30% 5% 30% ;
+        text-align: center;
+        background-color: rgb(255, 245, 231);
+    }
+
+
+    #bienvenido-descripcion{
+        padding: 5% 25% 10% 25%;
+    }
 }
+
 
 

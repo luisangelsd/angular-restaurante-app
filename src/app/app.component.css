@@ -1,6 +1,27 @@
-#menu{
-    background-color: rgb(243, 243, 243);
-    padding: 5px 50px;
-    display: grid;
-    grid-template-columns: 40% 60%;
+
+
+/* ============================================================ Vista: smartphone ============================================================ */
+@media screen and (max-width:780px){
+
+     #menu{
+        background-color: white;
+        padding: 5px 5px;
+        display: grid;
+        grid-template-columns: 100%;
+        text-align: center;
+    }
+
+   
+}
+
+
+
+/* ============================================================ Vista: Pantallas Grandes ============================================================ */
+@media screen and (min-width:781px){
+    #menu{
+        background-color: white;
+        padding: 5px 50px;
+        display: grid;
+        grid-template-columns: 40% 60%;
+    }
 }
